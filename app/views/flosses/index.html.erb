@@ -19,7 +19,7 @@
         <tr>
           <td><%= floss.colour %></td>
           <td>
-          	<%= simple_form_for floss, :method => :put do |f| %>
+          	<%= simple_form_for floss, remote: true, :method => :put do |f| %>
 			<%= f.input :quantity, label: false %>
 		  </td>
 		  <td><%= f.submit "update", :class => 'btn btn-primary' %></td>

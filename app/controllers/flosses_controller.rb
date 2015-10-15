@@ -12,12 +12,25 @@ class FlossesController < ApplicationController
 
   	def index
   		@flosses = current_user.flosses.order( 'flosses.colour DESC' )
+      respond_to do |format|
+      format.html
+      format.json
+    end
   	end
 
   	def update
     @floss = Floss.find(params[:id])
-    @floss.update_attributes(floss_params)
-    redirect_to flosses_path
+    respond_to do |format|
+      if @floss.update_attributes(floss_params)
+        format.html { redirect_to flosses_path, notice: 'Floss successfully updated.' }
+        format.json
+        format.js
+      else
+        format.html { redirect_to flosses_path, notice: 'Floss not updated' }
+        format.json
+        format.js
+      end
+    end
   end
 
   private

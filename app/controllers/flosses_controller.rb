@@ -14,6 +14,12 @@ class FlossesController < ApplicationController
   		@flosses = current_user.flosses.order( 'flosses.colour DESC' )
   	end
 
+  	def update
+    @floss = Floss.find(params[:id])
+    @floss.update_attributes(floss_params)
+    redirect_to flosses_path
+  end
+
   private
 
   def floss_params

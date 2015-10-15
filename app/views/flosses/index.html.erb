@@ -6,30 +6,26 @@
 	<%= link_to "Add Floss", new_floss_path, :class => 'btn btn-success' %>
 	<br />
 	<br />
-	<!--<table class="table table-hover table-condensed">
+	<table class="table table-hover table-condensed">
       <thead>
         <tr>
           <th>Colour</th>
-          <th>Increase</th>
           <th>Quantity</th>
-          <th>Decrease</th>
+          <th>Update</th>
         </tr>
       </thead>
-      <tbody>-->
+      <tbody>
         <% @flosses.each do |floss| %>
-        <!--<tr>
-          <td>--><%= floss.colour %><!--</td>
-          <td><i class="fa fa-minus"></i></td>
-          <td>--><!--</td>
-          <td><i class="fa fa-plus"></i></td>
-        </tr>-->
-
-		<%= simple_form_for floss, :method => :put do |f| %>
-			<%= f.input :quantity %>
-			<%= f.submit "update", :class => 'btn btn-primary' %>
-		<% end %>
-
-        <% end %><!--
+        <tr>
+          <td><%= floss.colour %></td>
+          <td>
+          	<%= simple_form_for floss, :method => :put do |f| %>
+			<%= f.input :quantity, label: false %>
+		  </td>
+		  <td><%= f.submit "update", :class => 'btn btn-primary' %></td>
+		  <% end %>
+        </tr>
+        <% end %>
       </tbody>
-    </table>-->    
+    </table> 
 </div>

@@ -11,7 +11,11 @@ class FlossesController < ApplicationController
   	end
 
   	def index
-  		@flosses = current_user.flosses.order( 'flosses.colour DESC' )
+      if params[:brand]
+        @flosses = current_user.flosses.where(:brand => params[:brand]).order( 'flosses.colour ASC' )
+      else
+        @flosses = current_user.flosses.order( 'flosses.colour ASC' )
+      end
       respond_to do |format|
       format.html
       format.json

@@ -6,6 +6,9 @@
 	<%= link_to new_floss_path, :class => 'btn btn-primary btn-lg' do %>
     <span class="glyphicon glyphicon-plus"></span> New Floss
   <% end %>
+  <%= link_to "DMC", flosses_path(:brand=>"DMC"), :class => 'btn btn-info' %>
+  <%= link_to "Anchor", flosses_path(:brand=>"Anchor"), :class => 'btn btn-info' %>
+  <%= link_to "Madeira", flosses_path(:brand=>"Madeira"), :class => 'btn btn-info' %>
 	<br />
 	<br />
 	<table class="table table-hover table-condensed">

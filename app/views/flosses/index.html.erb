@@ -3,7 +3,9 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1 class="text-center">Your Floss</h1>
   <hr />
-	<%= link_to "Add Floss", new_floss_path, :class => 'btn btn-success' %>
+	<%= link_to new_floss_path, :class => 'btn btn-primary btn-lg' do %>
+    <span class="glyphicon glyphicon-plus"></span> New Floss
+  <% end %>
 	<br />
 	<br />
 	<table class="table table-hover table-condensed">
@@ -20,9 +22,9 @@
           <td><%= floss.colour %></td>
           <td>
           	<%= simple_form_for floss, remote: true, :method => :put do |f| %>
-			<%= f.input :quantity, label: false %>
+			<%= f.input :quantity, label: false, :size => 5 %>
 		  </td>
-		  <td><%= f.submit "update", :class => 'btn btn-primary' %></td>
+		  <td><%= f.submit "update", :class => 'btn btn-success' %></td>
 		  <% end %>
         </tr>
         <% end %>

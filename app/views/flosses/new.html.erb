@@ -2,8 +2,8 @@
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <h1>Add a new Floss</h1>
   <%= simple_form_for @floss do |f| %>
-    <%= f.input :brand %>
-    <%= f.input :colour %>
+    <%= f.input :brand, default: '1', :collection => [['DMC', 'DMC'],['Anchor', 'Anchor']] %>
+    <%= f.input :colour, :label => "Number or Name" %>
     <%= f.input :quantity %>
     <br />
     <%= f.submit "Create", :class => 'btn btn-primary' %>

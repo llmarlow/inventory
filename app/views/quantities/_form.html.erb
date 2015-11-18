@@ -1,8 +1,7 @@
-<%= simple_form_for(@quantity, @user) do |f| %>
+<%= simple_form_for(@quantity) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-  <%= f.hidden_field :floss_id, required: true, value:floss.id %>
     <%= f.input :quantity, required: true %>
   </div>
 

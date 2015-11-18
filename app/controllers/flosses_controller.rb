@@ -6,21 +6,24 @@ class FlossesController < ApplicationController
 	end
 
 	def create
-	  @floss = current_user.flosses.create(floss_params)
+	  @floss = Floss.new(floss_params)
+    @floss.save
 	  redirect_to flosses_path
-  	end
+  end
 
-  	def index
-      if params[:brand]
-        @flosses = current_user.flosses.where(:brand => params[:brand]).order( 'flosses.colour ASC' )
-      else
-        @flosses = current_user.flosses.order( 'flosses.colour ASC' )
-      end
-      respond_to do |format|
-      format.html
-      format.json
+  def index
+    @quantity = Quantity.new
+    @user = current_user
+    if params[:brand]
+      @flosses = Flosses.where(:brand => params[:brand]).order( 'flosses.colour ASC' )
+    else
+      @flosses = current_user.flosses.load#.order( 'flosses.colour ASC' )
     end
-  	end
+    respond_to do |format|
+    format.html
+    format.json
+  end
+end
 
   	def update
     @floss = Floss.find(params[:id])
@@ -40,6 +43,6 @@ class FlossesController < ApplicationController
   private
 
   def floss_params
-    params.require(:floss).permit(:brand, :colour, :quantity)
+    params.require(:floss).permit(:brand, :colour)
   end
 end

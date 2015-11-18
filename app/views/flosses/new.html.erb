@@ -4,7 +4,6 @@
   <%= simple_form_for @floss do |f| %>
     <%= f.input :brand, default: '1', :collection => [['DMC', 'DMC'],['Anchor', 'Anchor']] %>
     <%= f.input :colour, :label => "Number or Name" %>
-    <%= f.input :quantity %>
     <br />
     <%= f.submit "Create", :class => 'btn btn-primary' %>
     <br />

@@ -1,5 +1,7 @@
 class Floss < ActiveRecord::Base
 	validates :colour, :brand, presence: true
-	validates_length_of :quantity, maximum: 3
+	validates :colour, uniqueness: true
 	belongs_to :user
+	has_many :quantities, dependent: :destroy
+	has_many :users, through: :quantities
 end

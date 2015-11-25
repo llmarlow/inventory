@@ -23,7 +23,7 @@ class QuantitiesController < ApplicationController
 	end
 
 	def update
-	  @quantity = Quantity.find(params[:id])
+	  @floss = Floss.find(params[:floss_id])
 	  respond_to do |format|
 	    if @quantity.update_attributes(quantity_params)
 	      format.html { redirect_to flosses_path, notice: 'Floss successfully updated.' }

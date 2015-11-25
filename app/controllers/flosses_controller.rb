@@ -15,9 +15,9 @@ class FlossesController < ApplicationController
     @quantity = Quantity.new
     @user = current_user
     if params[:brand]
-      @flosses = Flosses.where(:brand => params[:brand]).order( 'flosses.colour ASC' )
+      @flosses = Floss.where(:brand => params[:brand])
     else
-      @flosses = current_user.flosses.load#.order( 'flosses.colour ASC' )
+      @flosses = Floss.all
     end
     respond_to do |format|
     format.html
@@ -26,7 +26,7 @@ class FlossesController < ApplicationController
 end
 
   	def update
-    @floss = Floss.find(params[:id])
+    @quantity = Quantity.find(params[:id])
     respond_to do |format|
       if @floss.update_attributes(floss_params)
         format.html { redirect_to flosses_path, notice: 'Floss successfully updated.' }

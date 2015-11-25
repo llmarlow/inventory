@@ -21,15 +21,26 @@
       </thead>
       <tbody>
         <% @flosses.each do |floss| %>
-        <tr>
-          <td><%= floss.colour %></td>
-          <td>
-          	<%= simple_form_for @quantity, url: floss_quantities_path(floss), remote: true do |f| %>   
-			       <%= f.input :quantity, label: false, :size => 5 %>
-		      </td>
-		      <td><%= f.submit "update", :class => 'btn btn-success' %></td>
-		    <% end %>
-        </tr>
+          <tr>
+            <% if floss.quantities.find_by(user_id: current_user) %>
+              <td><%= floss.colour %></td>
+              <td>
+              <%= floss.quantities.first.quantity %>
+              <%#= simple_form_for [@quantity, @floss], url: floss_quantity_path(@quantity, @floss), method: 'patch', remote: true do |f| %>
+            	    <%#= f.input :quantity, label: false, :size => 5 %>
+  		            </td>
+  		            <td><%#= f.submit "update", :class => 'btn btn-success' %></td>
+                  <%# end %>
+            <% else %>
+              <td><%= floss.colour %></td>
+              <td>
+                <%= simple_form_for @quantity, url: floss_quantities_path(floss), remote: true do |f| %>   
+                 <%= f.input :quantity, label: false, :size => 5 %>
+              </td>
+              <td><%= f.submit "update", :class => 'btn btn-success' %></td>
+            <% end %>
+          </tr>
+        <% end %>
         <% end %>
       </tbody>
     </table> 
